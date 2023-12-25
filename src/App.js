@@ -2,18 +2,22 @@ import logo from './logo.svg';
 import './App.css';
 import LoginPage from './login/LoginPage';
 import { useState } from "react";
+import TreeAdoptionForm from './tree/TreeAdoptionForm';
 
 function App() {
   const [loginSelected, setLoginSelected] = useState();
+  const [formselected, setformselected] = useState();
   return ( <> 
     {loginSelected && <LoginPage/>}
-    {!loginSelected && 
+    {formselected && <TreeAdoptionForm/>}
+    {!loginSelected && !formselected &&
     <div>
     <header>
-    <button onClick={()=>setLoginSelected(true)}>Login</button>
+    <button onClick={()=>setLoginSelected(true)} className="cta-button">Login</button>
+
       <h1>Save the Tree Initiative</h1>
       <p>Join us in our mission to protect and nurture our environment by adopting and caring for trees.</p>
-      <a href="/adopt" className="cta-button">Adopt a Tree</a>
+      < button  onClick={()=>setformselected(true)} className="cta-button">Adopt a Tree</button>
     </header>
     
     <section>
@@ -39,7 +43,6 @@ function App() {
         Ready to make a difference? Click the button below to adopt a tree and become a part of the
         movement to save the environment.
       </p>
-      <a href="/adopt" className="cta-button">Adopt a Tree</a>
     </section>
   </div>
     }
